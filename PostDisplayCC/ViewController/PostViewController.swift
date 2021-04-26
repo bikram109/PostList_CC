@@ -29,7 +29,7 @@ class PostViewController: UITableViewController {
     // fetch all posts from API
     func fetchData() {
         
-        // Uncomment below code for mock api
+       // Fetch data from Mock service
         MockService.shared.fetchPosts{  (posts, err) in
             
             if  err != nil{
@@ -45,6 +45,23 @@ class PostViewController: UITableViewController {
                 self?.refreshControl?.endRefreshing()
             }
         }
+        
+        // Uncomment for fetching from Real API
+//        Service.shared.fetchPosts {  (posts, err) in
+//            if  err != nil{
+//                DispatchQueue.main.async {[weak self] in
+//                    self?.showAlert(withTitle: "Error", message: "Failed to fetch posts")
+//                }
+//                return
+//            }
+//            self.postViewModels = posts?.map({return PostViewModel(post:$0)}) ?? []
+//            // UI part should be always in main thread
+//            DispatchQueue.main.async {[weak self] in
+//                self?.tableView.reloadData()
+//                self?.refreshControl?.endRefreshing()
+//            }
+//        }
+        
     }
 
 
