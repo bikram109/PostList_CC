@@ -17,17 +17,14 @@ class PostDisplayCCTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    // Test view model is created or not
+    func testPostViewModel(){
+        let post = Post(id: 1, userId: 2, title: "test 1", body: "body 1", imageUrl: "imgurl", thumbnailUrl: "thumbnail.com")
+        let postViewModel = PostViewModel(post: post)
+        XCTAssertEqual(post.title, postViewModel.title)
+        XCTAssertEqual(post.thumbnailUrl, postViewModel.thumbnailUrl)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
 
 }
